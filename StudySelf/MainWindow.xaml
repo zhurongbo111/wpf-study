@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StudySelf"
         mc:Ignorable="d"
-        Title="朝夕教育-组态监控系统" Height="450" Width="800">
+        Title="朝夕教育-组态监控系统" Height="750" Width="1200">
     <WindowChrome.WindowChrome>
         <WindowChrome NonClientFrameEdges="None" UseAeroCaptionButtons="False" ></WindowChrome>
     </WindowChrome.WindowChrome>
@@ -16,6 +16,32 @@
             <GradientStop Color="#15212F" Offset="1"/>
         </LinearGradientBrush>
     </Window.Background>
+    <Window.Resources>
+        <Style x:Key="InfoButton" TargetType="Button">
+            <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="5" Background="Transparent" Name="border">
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background">
+                                    <Setter.Value>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                            <GradientStop Color="Transparent" Offset="0.5"/>
+                                            <GradientStop Color="#3FFF" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.Background>
             <VisualBrush Viewport="0,0,10,10"
@@ -58,8 +84,9 @@
                         <ColumnDefinition Width="*" MaxWidth="600"></ColumnDefinition>
                         <ColumnDefinition Width="100"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="设备介绍" Height="30" FontSize="14" HorizontalAlignment="Right" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White" Opacity="0.6" ></TextBlock>
-                    
+                    <Button Grid.Column="0" Content="设备介绍" Height="30" FontSize="14" HorizontalAlignment="Right" Margin="0,0,10,0" 
+                            VerticalAlignment="Top" Foreground="White" Opacity="0.6" Style="{StaticResource InfoButton}" ></Button>
+
                     <Path Grid.Column="0" Grid.ColumnSpan="3" Data="M0,0 0.03,0.66 C0.047,1 0.047,1 0.093,1 L0.907,1 C0.953,1 0.953,1 0.97,0.66 L1,0"
                           StrokeThickness="1"
                           VerticalAlignment="Top"
@@ -95,7 +122,10 @@
                         </Path.Fill>
                     </Path>
                     <TextBlock Grid.Column="1" Text="工厂设备机械管理监控" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"></TextBlock>
-                    <TextBlock Grid.Column="2" Text="系统设置" Height="30" FontSize="14" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" Foreground="White" Opacity="0.6"></TextBlock>
+                    <Button Grid.Column="2" Content="系统设置" Height="30" FontSize="14"
+                            HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Foreground="White" Opacity="0.6" Style="{StaticResource InfoButton}">
+
+                    </Button>
                 </Grid>
                 <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center" >
                     <StackPanel>

@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <Folder Include="Assets\Styles\" />
+    <Folder Include="Controls\" />
   </ItemGroup>
 
   <ItemGroup>
