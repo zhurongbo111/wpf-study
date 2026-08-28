@@ -9,7 +9,27 @@
     <WindowChrome.WindowChrome>
         <WindowChrome NonClientFrameEdges="None" UseAeroCaptionButtons="False" ></WindowChrome>
     </WindowChrome.WindowChrome>
+    <Window.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#15212F" Offset="0"/>
+            <GradientStop Color="#1D2D3E" Offset="0.6"/>
+            <GradientStop Color="#15212F" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
     <Grid>
+        <Grid.Background>
+            <VisualBrush Viewport="0,0,10,10"
+                         ViewportUnits="Absolute"
+                         TileMode="Tile"
+                         Opacity="0.3">
+                <VisualBrush.Visual>
+                    <Border Width="10"
+                            Height="10"
+                            BorderThickness="1,1,0,0"
+                            BorderBrush="#1FFF"/>
+                </VisualBrush.Visual>
+            </VisualBrush>
+        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
@@ -24,8 +44,8 @@
                 <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center" >
                     <Image Source="/Assets/Images/Logo_64.png" Height="28" Width="28" Margin="10,0" ></Image>
                     <StackPanel>
-                        <TextBlock Text="朝夕教育-智慧工业" FontSize="12"></TextBlock>
-                        <TextBlock Text="ZHAOXIEDU-SMART" FontSize="8">
+                        <TextBlock Text="朝夕教育-智慧工业" FontSize="12" Foreground="White"></TextBlock>
+                        <TextBlock Text="ZHAOXIEDU-SMART" FontSize="8" Foreground="White" Opacity="0.6" >
                             <TextBlock.RenderTransform>
                                 <ScaleTransform ScaleX="1.3" ></ScaleTransform>
                             </TextBlock.RenderTransform>
@@ -35,11 +55,11 @@
                 <Grid Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="100"></ColumnDefinition>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*" MaxWidth="600"></ColumnDefinition>
                         <ColumnDefinition Width="100"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="设备介绍" Height="30" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Top"></TextBlock>
-                    <TextBlock Grid.Column="1" Text="工厂设备机械管理监控" Height="30" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Top"></TextBlock>
+                    <TextBlock Grid.Column="0" Text="设备介绍" Height="30" FontSize="14" HorizontalAlignment="Right" Margin="0,0,10,0" VerticalAlignment="Center" Foreground="White" Opacity="0.6" ></TextBlock>
+                    
                     <Path Grid.Column="0" Grid.ColumnSpan="3" Data="M0,0 0.03,0.66 C0.047,1 0.047,1 0.093,1 L0.907,1 C0.953,1 0.953,1 0.97,0.66 L1,0"
                           StrokeThickness="1"
                           VerticalAlignment="Top"
@@ -49,16 +69,10 @@
                           Stretch="Fill">
                         <Path.Stroke>
                             <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                                <GradientStop Color="#0effdd" Offset="0.3"/>
-                                <GradientStop Color="#0effdd" Offset="1"/>
+                                <GradientStop Color="#0FFF" Offset="0.3"/>
+                                <GradientStop Color="#7FFF" Offset="1"/>
                             </LinearGradientBrush>
                         </Path.Stroke>
-                        <!--<Path.Fill>
-                            <RadialGradientBrush Center="0.5,1" GradientOrigin="0.5,1">
-                                <GradientStop Color="#385FB0" Offset="0"/>
-                                <GradientStop Color="#152230" Offset="1"/>
-                            </RadialGradientBrush>
-                        </Path.Fill>-->
                     </Path>
                     <Path Grid.Column="1" Data="M0,0 0.03,0.66 C0.047,1 0.047,1 0.093,1 L0.907,1 C0.953,1 0.953,1 0.97,0.66 L1,0"
                           StrokeThickness="1"
@@ -69,27 +83,28 @@
                           Stretch="Fill">
                         <Path.Stroke>
                             <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                                <GradientStop Color="#d0d" Offset="0"/>
-                                <GradientStop Color="#d0d" Offset="1"/>
+                                <GradientStop Color="#0FFF" Offset="0"/>
+                                <GradientStop Color="#7FFF" Offset="1"/>
                             </LinearGradientBrush>
                         </Path.Stroke>
-                        <!--<Path.Fill>
+                        <Path.Fill>
                             <RadialGradientBrush Center="0.5,1" GradientOrigin="0.5,1">
                                 <GradientStop Color="#385FB0" Offset="0"/>
                                 <GradientStop Color="#152230" Offset="1"/>
                             </RadialGradientBrush>
-                        </Path.Fill>-->
+                        </Path.Fill>
                     </Path>
-                    <TextBlock Grid.Column="2" Text="系统设置" Height="30" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Top"></TextBlock>
+                    <TextBlock Grid.Column="1" Text="工厂设备机械管理监控" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"></TextBlock>
+                    <TextBlock Grid.Column="2" Text="系统设置" Height="30" FontSize="14" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" Foreground="White" Opacity="0.6"></TextBlock>
                 </Grid>
                 <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center" >
                     <StackPanel>
-                        <TextBlock Text="20:00:00" FontSize="12">
+                        <TextBlock Text="20:00:00" FontSize="12" Foreground="White" >
                             <TextBlock.RenderTransform>
                                 <ScaleTransform ScaleX="1.3" ></ScaleTransform>
                             </TextBlock.RenderTransform>
                         </TextBlock>
-                        <TextBlock Text="周一 2025/06/02" FontSize="8"></TextBlock>
+                        <TextBlock Text="周一 2025/06/02" FontSize="8" Foreground="White" Opacity="0.6"></TextBlock>
                     </StackPanel>
                     <Button Content="退出系统" Margin="10,0" FontSize="12" Height="30" Width="80" Foreground="White" >
                         <Button.Template>
