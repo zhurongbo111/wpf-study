@@ -41,6 +41,44 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style x:Key="InfoGroup" TargetType="GroupBox">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="GroupBox">
+                        <Grid Background="#2000">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Ellipse Width="8" Height="8" Stroke="#9FFF" StrokeThickness="1" HorizontalAlignment="Left" Margin="8,0"/>
+                            <Ellipse Width="4" Height="4" Fill="#9FFF" HorizontalAlignment="Left" Margin="10,0"/>
+                            <Line X1="0" Y1="0" X2="6" Y2="10" Stroke="#9FFF" StrokeThickness="1" VerticalAlignment="Bottom" Margin="14,1"/>
+                            <Border Height="1" Background="#9FFF" VerticalAlignment="Bottom" Margin="19.5,0,0,1"/>
+
+                            <Grid Margin="25,0,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <ContentPresenter ContentSource="Header" TextBlock.Foreground="White" VerticalAlignment="Center"/>
+                                <StackPanel Orientation="Horizontal" Grid.Column="1" VerticalAlignment="Center" Margin="15,0,0,0">
+                                    <Polyline Points="0 0 4 4 0 8" Stroke="#3FFF" StrokeThickness="1" Margin="1,0"/>
+                                    <Polyline Points="0 0 4 4 0 8" Stroke="#4FFF" StrokeThickness="1" Margin="1,0"/>
+                                    <Polyline Points="0 0 4 4 0 8" Stroke="#5FFF" StrokeThickness="1" Margin="1,0"/>
+                                    <Polyline Points="0 0 4 4 0 8" Stroke="#6FFF" StrokeThickness="1" Margin="1,0"/>
+                                    <Polyline Points="0 0 4 4 0 8" Stroke="#7FFF" StrokeThickness="1" Margin="1,0"/>
+                                    <Polyline Points="0 0 4 4 0 8" Stroke="#8FFF" StrokeThickness="1" Margin="1,0"/>
+                                </StackPanel>
+                            </Grid>
+
+
+                            <ContentPresenter Grid.Row="1" Margin="10"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
     <Grid>
         <Grid.Background>
@@ -81,7 +119,7 @@
                 <Grid Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="100"></ColumnDefinition>
-                        <ColumnDefinition Width="*" MaxWidth="600"></ColumnDefinition>
+                        <ColumnDefinition Width="*" MaxWidth="450"></ColumnDefinition>
                         <ColumnDefinition Width="100"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Button Grid.Column="0" Content="设备介绍" Height="30" FontSize="14" HorizontalAlignment="Right" Margin="0,0,10,0" 
@@ -154,5 +192,68 @@
                 </StackPanel>
             </Grid>
         </StackPanel>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <UniformGrid Grid.Column="0" Rows="3" Columns="1">
+                <GroupBox Header="配置详情" Style="{StaticResource InfoGroup}" >
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="79" VerticalAlignment="Bottom" Margin="10,0,0,0" Foreground="White" FontSize="22"></TextBlock>
+                            <TextBlock Grid.Column="1" Text="设备负载" Margin="10,0,0,2" Foreground="White" Opacity="0.6" VerticalAlignment="Bottom" ></TextBlock>
+                        </Grid>
+                        <ProgressBar Grid.Row="1" Margin="10,0,0,0" Height="3" Background="#2000" Foreground="Orange" BorderThickness="0" Maximum="100" Minimum="0" Value="79" ></ProgressBar>
+                        <UniformGrid Grid.Row="2" Columns="2" Rows="2" Margin="8,8,8,0">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="/Assets/Images/d1.png" Margin="0,15" Height="21"/>
+                                <StackPanel VerticalAlignment="Center" Margin="5,0,0,0">
+                                    <TextBlock Text="12.3" FontSize="14" Foreground="White"></TextBlock>
+                                    <TextBlock Text="设备大小(m3)" FontSize="10" Foreground="White" Opacity="0.6"></TextBlock>
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="/Assets/Images/d2.png" Margin="0,15" Height="21"/>
+                                <StackPanel VerticalAlignment="Center" Margin="5,0,0,0">
+                                    <TextBlock Text="12.3" FontSize="14" Foreground="White"></TextBlock>
+                                    <TextBlock Text="设备大小(m3)" FontSize="10" Foreground="White" Opacity="0.6"></TextBlock>
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="/Assets/Images/d3.png" Margin="0,15" Height="21"/>
+                                <StackPanel VerticalAlignment="Center" Margin="5,0,0,0">
+                                    <TextBlock Text="12.3" FontSize="14" Foreground="White"></TextBlock>
+                                    <TextBlock Text="设备大小(m3)" FontSize="10" Foreground="White" Opacity="0.6"></TextBlock>
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="/Assets/Images/d4.png" Margin="0,15" Height="21"/>
+                                <StackPanel VerticalAlignment="Center" Margin="5,0,0,0">
+                                    <TextBlock Text="12.3" FontSize="14" Foreground="White"></TextBlock>
+                                    <TextBlock Text="设备大小(m3)" FontSize="10" Foreground="White" Opacity="0.6"></TextBlock>
+                                </StackPanel>
+                            </StackPanel>
+                        </UniformGrid>
+                    </Grid>
+                </GroupBox>
+                <GroupBox Header="机械设备清单" Style="{StaticResource InfoGroup}">
+                    <TextBlock Text="内容" Foreground="White"></TextBlock>
+                </GroupBox>
+                <GroupBox Header="设备处理状态统计" Style="{StaticResource InfoGroup}">
+                    <TextBlock Text="哈哈" Foreground="White"></TextBlock>
+                </GroupBox>
+            </UniformGrid>
+        </Grid>
+
     </Grid>
 </Window>
