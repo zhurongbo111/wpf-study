@@ -79,6 +79,26 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style x:Key="DeviceRadio" TargetType="RadioButton">
+            <Setter Property="Foreground" Value="White"></Setter>
+            <Setter Property="Height" Value="22"></Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RadioButton">
+                        <Border BorderBrush="Transparent" BorderThickness="0,0,0,1" Name="border" Margin="5,0">
+                            <ContentPresenter  VerticalAlignment="Center"></ContentPresenter>
+                        </Border>
+                        
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True" >
+                                <Setter Property="Foreground" Value="Orange"></Setter>
+                                <Setter TargetName="border" Property="BorderBrush" Value="Orange"></Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
     <Grid>
         <Grid.Background>
@@ -247,7 +267,40 @@
                     </Grid>
                 </GroupBox>
                 <GroupBox Header="机械设备清单" Style="{StaticResource InfoGroup}">
-                    <TextBlock Text="内容" Foreground="White"></TextBlock>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Border Grid.Row="0" HorizontalAlignment="Right" BorderBrush="#5FFF" BorderThickness="1,0">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                    <GradientStop Color="#44477CD3" Offset="0"/>
+                                    <GradientStop Color="#00477CD3" Offset="0.5"/>
+                                    <GradientStop Color="#44477CD3" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                <RadioButton Content="维护" IsChecked="True" Style="{StaticResource DeviceRadio}"></RadioButton>
+                                <RadioButton Content="信息" Style="{StaticResource DeviceRadio}"></RadioButton>
+                            </StackPanel>
+                        </Border>
+                        <Border Margin="0,5,0,0" Grid.Row="1" BorderBrush="#4fff" BorderThickness="0,0,0,1">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="设备编号" Foreground="White" Opacity="0.6" VerticalAlignment="Center"></TextBlock>
+                                <TextBlock Grid.Column="1" Text="开机时间" Foreground="White" Opacity="0.6" VerticalAlignment="Center"></TextBlock>
+                                <TextBlock Grid.Column="2" Text="运行功率" Foreground="White" Opacity="0.6" VerticalAlignment="Center"></TextBlock>
+                                <TextBlock Grid.Column="3" Text="工作时间" Foreground="White" Opacity="0.6" VerticalAlignment="Center"></TextBlock>
+                            </Grid>
+                        </Border>
+                    </Grid>
                 </GroupBox>
                 <GroupBox Header="设备处理状态统计" Style="{StaticResource InfoGroup}">
                     <TextBlock Text="哈哈" Foreground="White"></TextBlock>
