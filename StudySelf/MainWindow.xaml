@@ -323,6 +323,9 @@
                     <c:WarningLight Height="100" LightState="Warning" ></c:WarningLight>
                     <c:WarningLight Height="100" LightState="Run" ></c:WarningLight>
                 </UniformGrid>
+                <UniformGrid Margin="0,20,0,0" Columns="1" >
+                    <c:CAN Height="200"></c:CAN>
+                </UniformGrid>
             </StackPanel>
         </Grid>
 
