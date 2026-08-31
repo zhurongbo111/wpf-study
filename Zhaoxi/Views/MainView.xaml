@@ -743,7 +743,7 @@
                             Height="100"
                             Canvas.Top="102"
                             Canvas.Left="120"
-                            Level="34"/>
+                            Level="100"/>
 
                     <c:CAN Width="50"
                            Height="140"

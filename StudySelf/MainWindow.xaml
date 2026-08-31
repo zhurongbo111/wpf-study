@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StudySelf"
+        xmlns:c="clr-namespace:StudySelf.Controls"
         mc:Ignorable="d"
         Title="朝夕教育-组态监控系统" Height="750" Width="1200">
     <WindowChrome.WindowChrome>
@@ -306,6 +307,9 @@
                     <TextBlock Text="哈哈" Foreground="White"></TextBlock>
                 </GroupBox>
             </UniformGrid>
+            <Grid Grid.Column="1">
+                <c:Tank Height="100" Width="100" WaveHeight="0"></c:Tank>
+            </Grid>
         </Grid>
 
     </Grid>

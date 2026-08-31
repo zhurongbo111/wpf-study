@@ -5,20 +5,41 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:StudySelf.Controls"
              mc:Ignorable="d" 
-             d:DesignHeight="240" d:DesignWidth="180">
-    <Grid>
-        <Path Margin="5,25,0,0" Fill="#7BB7FD" Data="M0,0 A60 60 0 0 0 60 0 A60 60 60 0 1 120 0 A60 60 120 0 0 180 0"></Path>
-        <Border VerticalAlignment="Top" Background="Orange" Height="5" CornerRadius="2" ></Border>
-        <Border Height="235" Width="170" Margin="0,5,0,0" VerticalAlignment="Top" BorderBrush="#888" BorderThickness="1,0,1,1" >
-            <Border.Background>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                    <GradientStop Color="#DDD" Offset="0"/>
-                    <GradientStop Color="#1DDD" Offset="0.3"/>
-                    <GradientStop Color="#1DDD" Offset="0.7"/>
-                    <GradientStop Color="#DDD" Offset="1"/>
-                </LinearGradientBrush>
-            </Border.Background>
-        </Border>
-            
-    </Grid>
+             d:DesignHeight="240" d:DesignWidth="190">
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation Duration="0:0:2" From="0" To="-180" Storyboard.TargetName="tank" Storyboard.TargetProperty="X" RepeatBehavior="Forever" />
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </UserControl.Triggers>
+    <Viewbox>
+        <Grid>
+            <Canvas Margin="5,0,0,0">
+                <Canvas.Clip>
+                    <RectangleGeometry Rect="0 -20 180 260" RadiusX="20" RadiusY="20" ></RectangleGeometry>
+                </Canvas.Clip>
+                <Path Fill="#7BB7FD" Data="M0,0 A45 45 0 0 0 45 0 A45 45 45 0 1 90 0 A45 45 90 0 0 135 0 A45 45 135 0 1 180 0 A45 45 180 0 0 225 0 A45 45 225 0 1 270 0 A45 45 270 0 0 315 0 A45 45 315 0 1 360 0 L360 240 0 240z">
+                    <Path.RenderTransform>
+                        <TranslateTransform X="-135" Y="0" x:Name="tank" ></TranslateTransform>
+                    </Path.RenderTransform>
+                </Path>
+            </Canvas>
+
+            <Border VerticalAlignment="Top" Background="Orange" Height="5" CornerRadius="2" ></Border>
+            <Border Height="235" Width="180" Margin="5,5,5,0" VerticalAlignment="Top" BorderBrush="#888" BorderThickness="1,0,1,1" CornerRadius="0,0,20,20" >
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                        <GradientStop Color="#DDD" Offset="0"/>
+                        <GradientStop Color="#1DDD" Offset="0.3"/>
+                        <GradientStop Color="#1DDD" Offset="0.7"/>
+                        <GradientStop Color="#DDD" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+            </Border>
+        </Grid>
+    </Viewbox>
+
 </UserControl>
