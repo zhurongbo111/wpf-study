@@ -1,0 +1,53 @@
+﻿<UserControl x:Class="StudySelf.Controls.WarningLight"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:StudySelf.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="200" d:DesignWidth="60">
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation Duration="0:0:2" From="0.2" To="1" RepeatBehavior="Forever" Storyboard.TargetName="b1" Storyboard.TargetProperty="Opacity" AutoReverse="True" />
+                    <DoubleAnimation Duration="0:0:2" From="0.2" To="1" RepeatBehavior="Forever" Storyboard.TargetName="b2" Storyboard.TargetProperty="Opacity" AutoReverse="True" />
+                    <DoubleAnimation Duration="0:0:2" From="0.2" To="1" RepeatBehavior="Forever" Storyboard.TargetName="b3" Storyboard.TargetProperty="Opacity" AutoReverse="True" />
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </UserControl.Triggers>
+    <Viewbox>
+        <StackPanel>
+            <Border Width="40" Height="10" CornerRadius="7,7,0,0" Background="#ddd"></Border>
+            <Border Width="40" Height="50" Background="DarkRed" Name="b1" ></Border>
+            <Border Width="40" Height="50" Background="OrangeRed" Name="b1_show" Visibility="Collapsed" >
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="20" Color="OrangeRed" Direction="0" ShadowDepth="0" ></DropShadowEffect>
+                </Border.Effect>
+            </Border>
+            <Border Width="40" Height="50" Background="DarkOrange" Name="b2"></Border>
+            <Border Width="40" Height="50" Background="Gold" Name="b2_show" Visibility="Collapsed" >
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="20" Color="Gold" Direction="0" ShadowDepth="0" ></DropShadowEffect>
+                </Border.Effect>
+            </Border>
+            <Border Width="40" Height="50" Background="DarkGreen" Name="b3"></Border>
+            <Border Width="40" Height="50" Background="LightGreen" Name="b3_show" Visibility="Collapsed" >
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="20" Color="LightGreen" Direction="0" ShadowDepth="0" ></DropShadowEffect>
+                </Border.Effect>
+            </Border>
+            <Border Width="40" Height="10" CornerRadius="0,0,7,7" Background="#ddd"></Border>
+            <Border Width="20" Height="30" CornerRadius="0,0,3,3">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                        <GradientStop Color="#999" Offset="0"/>
+                        <GradientStop Color="#DDD" Offset="0.5"/>
+                        <GradientStop Color="#999" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+            </Border>
+        </StackPanel>
+    </Viewbox>
+</UserControl>

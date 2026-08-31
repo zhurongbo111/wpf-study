@@ -308,9 +308,21 @@
                 </GroupBox>
             </UniformGrid>
             <StackPanel Grid.Column="1">
-                <c:Tank Height="100" Width="100" WaveHeight="56"></c:Tank>
-                <c:Valve Height="100" Width="100" IsOpen="True"></c:Valve>
-                <c:Valve Height="100" Width="100" IsOpen="False"></c:Valve>
+                <UniformGrid Margin="0,20,0,0" Columns="2">
+                    <c:Tank Height="100" WaveHeight="28"></c:Tank>
+                    <c:Tank Height="100" WaveHeight="66"></c:Tank>
+                </UniformGrid>
+                <UniformGrid Margin="0,20,0,0" Columns="2" >
+                    <c:Valve Height="100" IsOpen="True"></c:Valve>
+                    <c:Valve Height="100" IsOpen="False"></c:Valve>
+                </UniformGrid>
+
+                <UniformGrid Margin="0,20,0,0" Columns="4" >
+                    <c:WarningLight Height="100" LightState="None" ></c:WarningLight>
+                    <c:WarningLight Height="100" LightState="Fault" ></c:WarningLight>
+                    <c:WarningLight Height="100" LightState="Warning" ></c:WarningLight>
+                    <c:WarningLight Height="100" LightState="Run" ></c:WarningLight>
+                </UniformGrid>
             </StackPanel>
         </Grid>
 
