@@ -307,9 +307,11 @@
                     <TextBlock Text="哈哈" Foreground="White"></TextBlock>
                 </GroupBox>
             </UniformGrid>
-            <Grid Grid.Column="1">
-                <c:Tank Height="100" Width="100" WaveHeight="0"></c:Tank>
-            </Grid>
+            <StackPanel Grid.Column="1">
+                <c:Tank Height="100" Width="100" WaveHeight="56"></c:Tank>
+                <c:Valve Height="100" Width="100" IsOpen="True"></c:Valve>
+                <c:Valve Height="100" Width="100" IsOpen="False"></c:Valve>
+            </StackPanel>
         </Grid>
 
     </Grid>
