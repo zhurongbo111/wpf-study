@@ -89,7 +89,7 @@
                         <Border BorderBrush="Transparent" BorderThickness="0,0,0,1" Name="border" Margin="5,0">
                             <ContentPresenter  VerticalAlignment="Center"></ContentPresenter>
                         </Border>
-                        
+
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsChecked" Value="True" >
                                 <Setter Property="Foreground" Value="Orange"></Setter>
@@ -101,6 +101,16 @@
             </Setter>
         </Style>
     </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Loaded">
+            <BeginStoryboard>
+                <Storyboard RepeatBehavior="Forever">
+                    <DoubleAnimation Storyboard.TargetName="p1" Storyboard.TargetProperty="StrokeDashOffset" From="6" To="0" Duration="0:0:1"/>
+                    <!--<DoubleAnimation Storyboard.TargetName="p2" Storyboard.TargetProperty="StrokeDashOffset" From="6" To="0" Duration="0:0:1"/>-->
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Window.Triggers>
     <Grid>
         <Grid.Background>
             <VisualBrush Viewport="0,0,10,10"
@@ -307,26 +317,47 @@
                     <TextBlock Text="哈哈" Foreground="White"></TextBlock>
                 </GroupBox>
             </UniformGrid>
-            <StackPanel Grid.Column="1">
-                <UniformGrid Margin="0,20,0,0" Columns="2">
-                    <c:Tank Height="100" WaveHeight="28"></c:Tank>
-                    <c:Tank Height="100" WaveHeight="66"></c:Tank>
-                </UniformGrid>
-                <UniformGrid Margin="0,20,0,0" Columns="2" >
-                    <c:Valve Height="100" IsOpen="True"></c:Valve>
-                    <c:Valve Height="100" IsOpen="False"></c:Valve>
-                </UniformGrid>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="180"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Canvas Grid.Row="0">
+                    <c:Tank Canvas.Left="70" Canvas.Top="90" Height="100" WaveHeight="100"></c:Tank>
+                    <c:WarningLight Height="100" LightState="Run" Canvas.Left="100" Canvas.Top="280"></c:WarningLight>
+                    <c:Feed Canvas.Top="30" Canvas.Left="200"></c:Feed>
+                    <c:Feed Canvas.Top="280" Canvas.Left="160"></c:Feed>
+                    
+                    
+                    <c:WarningLight Height="80" LightState="Fault" Canvas.Left="530" Canvas.Top="230"></c:WarningLight>
+                    <c:WarningLight Height="80" LightState="None" Canvas.Left="750" Canvas.Top="106"></c:WarningLight>
+                    <c:WarningLight Height="80" LightState="Warning" Canvas.Left="750" Canvas.Top="386"></c:WarningLight>
+                    <Path Data="M147,450 320,450C350,450 350,450 350,420 L350,95C350,65 350,65 380,65 L410,65" StrokeThickness="8" Stroke="#887BB7FD" />
+                    <Path Name="p1" Data="M147,450 320,450C350,450 350,450 350,420 L350,95C350,65 350,65 380,65 L410,65" StrokeThickness="4" StrokeDashArray="3,3" StrokeDashOffset="0" Stroke="#409EFE" />
+                    <c:Valve Canvas.Top="430" Canvas.Left="200" IsOpen="False" Width="40"></c:Valve>
+                    <c:CAN Canvas.Top="50" Canvas.Left="400"></c:CAN>
+                    <Path StrokeThickness="8" Stroke="#887BB7FD" Data="M147,175 L260,175 C290,175 290,175 290,205 L290,420 C290,450 290,450 320,450 C350,450 350,450 350,385 C350,365 350,365 410,365" />
+                    <Path Name="p2" StrokeThickness="4" Stroke="#409EFE" Data="M147,175 L260,175 C290,175 290,175 290,205 L290,420 C290,450 290,450 320,450 C350,450 350,450 350,385 C350,365 350,365 410,365" StrokeDashArray="3,3" StrokeDashOffset="0" />
+                    <c:Valve Canvas.Top="155" Canvas.Left="200" IsOpen="True" Width="40" HorizontalAlignment="Center" VerticalAlignment="Top"></c:Valve>
+                    <c:CAN Canvas.Top="350" Canvas.Left="400"></c:CAN>
+                    <c:Tank Canvas.Left="70" Canvas.Top="380" Height="100" WaveHeight="66"></c:Tank>
+                    <Path Stroke="#AAFFA500" StrokeThickness="8" Data="M225,105 225,120 C225,130 225,130 235,130 L300,130 C310,130 310,130 310,120 L310,100 C310,90 310,90 320,90 L400,90" />
+                    <Path StrokeDashArray="2,2" Stroke="#FFA500" StrokeThickness="4" Data="M225,105 225,120 C225,130 225,130 235,130 L300,130 C310,130 310,130 310,120 L310,100 C310,90 310,90 320,90 L400,90" />
+                    <Path Stroke="#AAFFA500" StrokeThickness="8" Data="M450,170 470,170 C500,170 500,170 500,140 L500,120 C500,90 500,90 530,90 L610,90" />
+                    <Path Stroke="#FFA500" StrokeThickness="4" StrokeDashArray="3,3" StrokeDashOffset="0" Data="M450,170 470,170 C500,170 500,170 500,140 L500,120 C500,90 500,90 530,90 L610,90" />
+                    <c:CAN Canvas.Top="70" Canvas.Left="600"></c:CAN>
+                    <Path Stroke="#AAFFA500" StrokeThickness="8" Data="M650,190 820,190" />
+                    <Path Stroke="#FFA500" StrokeThickness="4" Data="M650,190 820,190" StrokeDashArray="3,3" StrokeDashOffset="0" />
+                    <c:Valve Canvas.Top="170" Canvas.Left="680" IsOpen="False" Width="40"></c:Valve>
+                    <Path Stroke="#AAFFA500" StrokeThickness="8" Data="M450,470 470,470 C500,470 500,470 500,440 L500,420 C500,390 500,390 530,390 L610,390" />
+                    <Path StrokeDashArray="3,3" StrokeDashOffset="0" Stroke="#FFA500" StrokeThickness="4" Data="M450,470 470,470 C500,470 500,470 500,440 L500,420 C500,390 500,390 530,390 L610,390" />
+                    <c:CAN Canvas.Top="350" Canvas.Left="600"></c:CAN>
+                    <Path Stroke="#AAFFA500" StrokeThickness="8" Data="M650,470 820,470" />
+                    <Path Stroke="#FFA500" StrokeThickness="4" Data="M650,470 820,470" StrokeDashArray="3,3" StrokeDashOffset="0" />
+                    <c:Valve Canvas.Top="450" Canvas.Left="680" IsOpen="True" Width="40"></c:Valve>
+                </Canvas>
 
-                <UniformGrid Margin="0,20,0,0" Columns="4" >
-                    <c:WarningLight Height="100" LightState="None" ></c:WarningLight>
-                    <c:WarningLight Height="100" LightState="Fault" ></c:WarningLight>
-                    <c:WarningLight Height="100" LightState="Warning" ></c:WarningLight>
-                    <c:WarningLight Height="100" LightState="Run" ></c:WarningLight>
-                </UniformGrid>
-                <UniformGrid Margin="0,20,0,0" Columns="1" >
-                    <c:CAN Height="200"></c:CAN>
-                </UniformGrid>
-            </StackPanel>
+            </Grid>
         </Grid>
 
     </Grid>
