@@ -19,6 +19,7 @@ namespace StudySelf
         public MainWindow()
         {
             InitializeComponent();
+            this.DataContext = new ViewModels.MainViewModel();
         }
     }
 }

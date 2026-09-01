@@ -297,20 +297,38 @@
                                 <RadioButton Content="信息" Style="{StaticResource DeviceRadio}"></RadioButton>
                             </StackPanel>
                         </Border>
-                        <Border Margin="0,5,0,0" Grid.Row="1" BorderBrush="#4fff" BorderThickness="0,0,0,1">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"></ColumnDefinition>
-                                    <ColumnDefinition Width="*"></ColumnDefinition>
-                                    <ColumnDefinition Width="*"></ColumnDefinition>
-                                    <ColumnDefinition Width="*"></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" Text="设备编号" Foreground="White" Opacity="0.6" VerticalAlignment="Center"></TextBlock>
-                                <TextBlock Grid.Column="1" Text="开机时间" Foreground="White" Opacity="0.6" VerticalAlignment="Center"></TextBlock>
-                                <TextBlock Grid.Column="2" Text="运行功率" Foreground="White" Opacity="0.6" VerticalAlignment="Center"></TextBlock>
-                                <TextBlock Grid.Column="3" Text="工作时间" Foreground="White" Opacity="0.6" VerticalAlignment="Center"></TextBlock>
-                            </Grid>
-                        </Border>
+                        <Border Margin="0,5,0,0" Grid.Row="1" BorderBrush="#4fff" BorderThickness="0,0,0,1" />
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="设备编号" Foreground="White" Opacity="0.6" VerticalAlignment="Center"></TextBlock>
+                            <TextBlock Grid.Column="1" Text="开机时间" Foreground="White" Opacity="0.6" VerticalAlignment="Center"></TextBlock>
+                            <TextBlock Grid.Column="2" Text="运行功率" Foreground="White" Opacity="0.6" VerticalAlignment="Center"></TextBlock>
+                            <TextBlock Grid.Column="3" Text="工作时间" Foreground="White" Opacity="0.6" VerticalAlignment="Center"></TextBlock>
+                        </Grid>
+                        <ItemsControl Grid.Row="2" Margin="0,5,0,0" ItemsSource="{Binding Devices}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="{Binding DeviceNum}" Foreground="White" VerticalAlignment="Center"></TextBlock>
+                                        <TextBlock Grid.Column="1" Text="{Binding StartTime}" Foreground="White" VerticalAlignment="Center"></TextBlock>
+                                        <TextBlock Grid.Column="2" Text="{Binding Power}" Foreground="White" VerticalAlignment="Center"></TextBlock>
+                                        <TextBlock Grid.Column="3" Text="{Binding WorkTime}" Foreground="White" VerticalAlignment="Center"></TextBlock>
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+
                     </Grid>
                 </GroupBox>
                 <GroupBox Header="设备处理状态统计" Style="{StaticResource InfoGroup}">
@@ -327,8 +345,8 @@
                     <c:WarningLight Height="100" LightState="Run" Canvas.Left="100" Canvas.Top="280"></c:WarningLight>
                     <c:Feed Canvas.Top="30" Canvas.Left="200"></c:Feed>
                     <c:Feed Canvas.Top="280" Canvas.Left="160"></c:Feed>
-                    
-                    
+
+
                     <c:WarningLight Height="80" LightState="Fault" Canvas.Left="530" Canvas.Top="230"></c:WarningLight>
                     <c:WarningLight Height="80" LightState="None" Canvas.Left="750" Canvas.Top="106"></c:WarningLight>
                     <c:WarningLight Height="80" LightState="Warning" Canvas.Left="750" Canvas.Top="386"></c:WarningLight>

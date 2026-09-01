@@ -13,6 +13,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Assets\Fonts\DingTalk-JinBuTi.ttf" />
     <Resource Include="Assets\Fonts\iconfont.ttf" />
     <Resource Include="Assets\Images\a1.png" />
