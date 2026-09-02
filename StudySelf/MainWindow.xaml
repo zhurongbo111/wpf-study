@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StudySelf"
         xmlns:c="clr-namespace:StudySelf.Controls"
+        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         mc:Ignorable="d"
         Title="朝夕教育-组态监控系统" Height="750" Width="1200">
     <WindowChrome.WindowChrome>
@@ -471,8 +472,272 @@
                     <Path Stroke="#AAFFA500" StrokeThickness="8" Data="M650,470 820,470" />
                     <Path Stroke="#FFA500" StrokeThickness="4" Data="M650,470 820,470" StrokeDashArray="3,3" StrokeDashOffset="0" />
                     <c:Valve Canvas.Top="450" Canvas.Left="680" IsOpen="True" Width="40"></c:Valve>
+                    <Grid Width="200" Canvas.Right="0" Canvas.Top="20">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Border HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="#5FFF" BorderThickness="1,0" Margin="0,10">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                    <GradientStop Color="#44477CD3" Offset="0"/>
+                                    <GradientStop Color="#00477CD3" Offset="0.5"/>
+                                    <GradientStop Color="#44477CD3" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <TextBlock Text="实时信息提醒" Foreground="Orange" Margin="15,5"/>
+                        </Border>
+                        <ItemsControl ItemsSource="{Binding MessageList}" Grid.Row="1">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Height="22" TextBlock.Foreground="#2FFF">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="40"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Text="{Binding Message}" VerticalAlignment="Center" TextTrimming="CharacterEllipsis"/>
+                                        <TextBlock Text="{Binding Date}"  Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </Grid>
                 </Canvas>
+                <GroupBox Header="设备运行数据统计" Style="{StaticResource InfoGroup}" Grid.Row="1">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="33"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Border HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            BorderBrush="#5FFF"
+            BorderThickness="1,0">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                    <GradientStop Color="#44477CD3" Offset="0"/>
+                                    <GradientStop Color="#00477CD3" Offset="0.5"/>
+                                    <GradientStop Color="#44477CD3" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <TextBlock Text="设备使用率"
+                   Foreground="#4FFF"
+                   Margin="15,5"/>
+                        </Border>
+                        <Border HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            BorderBrush="#5FFF"
+            BorderThickness="1,0"
+            Grid.Column="1">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                    <GradientStop Color="#44477CD3" Offset="0"/>
+                                    <GradientStop Color="#00477CD3" Offset="0.5"/>
+                                    <GradientStop Color="#44477CD3" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <TextBlock Text="设备磨损率"
+                   Foreground="#4FFF"
+                   Margin="15,5"/>
+                        </Border>
+                        <Border HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            BorderBrush="#5FFF"
+            BorderThickness="1,0"
+            Grid.Column="2">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                    <GradientStop Color="#44477CD3" Offset="0"/>
+                                    <GradientStop Color="#00477CD3" Offset="0.5"/>
+                                    <GradientStop Color="#44477CD3" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <TextBlock Text="设备故障率"
+                   Foreground="#4FFF"
+                   Margin="15,5"/>
+                        </Border>
+                        <Border HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            BorderBrush="#5FFF"
+            BorderThickness="1,0"
+            Grid.Column="3">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                    <GradientStop Color="#44477CD3" Offset="0"/>
+                                    <GradientStop Color="#00477CD3" Offset="0.5"/>
+                                    <GradientStop Color="#44477CD3" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <TextBlock Text="设备检修率"
+                   Foreground="#4FFF"
+                   Margin="15,5"/>
+                        </Border>
 
+                        <Border Height="1"
+            Background="#2FFF"
+            VerticalAlignment="Bottom"
+            Margin="10,0"/>
+                        <Border Height="1"
+            Background="#2FFF"
+            VerticalAlignment="Bottom"
+            Margin="10,0"
+            Grid.Column="1"/>
+                        <Border Height="1"
+            Background="#2FFF"
+            VerticalAlignment="Bottom"
+            Margin="10,0"
+            Grid.Column="2"/>
+                        <Border Height="1"
+            Background="#2FFF"
+            VerticalAlignment="Bottom"
+            Margin="10,0"
+            Grid.Column="3"/>
+
+                        <lvc:CartesianChart Grid.Row="1" Margin="10,5,10,0">
+                            <lvc:CartesianChart.Series>
+                                <lvc:LineSeries Values="10,25,43,30,80"
+                            PointGeometrySize="0"
+                            Stroke="#4F607D"
+                            Title="使用率">
+                                    <lvc:LineSeries.Fill>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                            <GradientStop Color="#1FFF" Offset="0"/>
+                                            <GradientStop Color="#0FFF" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </lvc:LineSeries.Fill>
+                                </lvc:LineSeries>
+                            </lvc:CartesianChart.Series>
+                            <lvc:CartesianChart.AxisX>
+                                <lvc:Axis Labels="09:00,12:00,15:00,18:00,21:00" FontSize="9">
+                                    <lvc:Axis.Separator>
+                                        <lvc:Separator Step="1"
+                                   Stroke="#2FFF"
+                                   StrokeDashArray="2,2"/>
+                                    </lvc:Axis.Separator>
+                                </lvc:Axis>
+                            </lvc:CartesianChart.AxisX>
+                            <lvc:CartesianChart.AxisY>
+                                <lvc:Axis MinValue="0"
+                      MaxValue="100"
+                      FontSize="9">
+                                    <lvc:Axis.Separator>
+                                        <lvc:Separator Step="25" StrokeThickness="0"/>
+                                    </lvc:Axis.Separator>
+                                </lvc:Axis>
+                            </lvc:CartesianChart.AxisY>
+                        </lvc:CartesianChart>
+
+                        <lvc:CartesianChart Grid.Row="1"
+                        Grid.Column="1"
+                        Margin="10,5,10,0">
+                            <lvc:CartesianChart.Series>
+                                <lvc:ColumnSeries Values="10,25,43,30,80"
+                              MaxColumnWidth="12"
+                              Fill="#409EFE"
+                              Stroke="#4F607D"
+                              Title="磨损率">
+                                </lvc:ColumnSeries>
+                            </lvc:CartesianChart.Series>
+                            <lvc:CartesianChart.AxisX>
+                                <lvc:Axis Labels="09:00,12:00,15:00,18:00,21:00" FontSize="9">
+                                    <lvc:Axis.Separator>
+                                        <lvc:Separator Step="1"
+                                   Stroke="#2FFF"
+                                   StrokeDashArray="2,2"/>
+                                    </lvc:Axis.Separator>
+                                </lvc:Axis>
+                            </lvc:CartesianChart.AxisX>
+                            <lvc:CartesianChart.AxisY>
+                                <lvc:Axis MinValue="0"
+                      MaxValue="100"
+                      FontSize="9">
+                                    <lvc:Axis.Separator>
+                                        <lvc:Separator Step="25" StrokeThickness="0"/>
+                                    </lvc:Axis.Separator>
+                                </lvc:Axis>
+                            </lvc:CartesianChart.AxisY>
+                        </lvc:CartesianChart>
+
+
+                        <lvc:CartesianChart Grid.Row="1"
+                        Grid.Column="2"
+                        Margin="10,5,10,0">
+                            <lvc:CartesianChart.Series>
+                                <lvc:LineSeries Values="10,25,43,30,80"
+                            PointGeometrySize="0"
+                            Stroke="#4F607D"
+                            Title="使用率">
+                                    <lvc:LineSeries.Fill>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                            <GradientStop Color="#1FFF" Offset="0"/>
+                                            <GradientStop Color="#0FFF" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </lvc:LineSeries.Fill>
+                                </lvc:LineSeries>
+                            </lvc:CartesianChart.Series>
+                            <lvc:CartesianChart.AxisX>
+                                <lvc:Axis Labels="09:00,12:00,15:00,18:00,21:00" FontSize="9">
+                                    <lvc:Axis.Separator>
+                                        <lvc:Separator Step="1"
+                                   Stroke="#2FFF"
+                                   StrokeDashArray="2,2"/>
+                                    </lvc:Axis.Separator>
+                                </lvc:Axis>
+                            </lvc:CartesianChart.AxisX>
+                            <lvc:CartesianChart.AxisY>
+                                <lvc:Axis MinValue="0"
+                      MaxValue="100"
+                      FontSize="9">
+                                    <lvc:Axis.Separator>
+                                        <lvc:Separator Step="25" StrokeThickness="0"/>
+                                    </lvc:Axis.Separator>
+                                </lvc:Axis>
+                            </lvc:CartesianChart.AxisY>
+                        </lvc:CartesianChart>
+
+                        <lvc:CartesianChart Grid.Row="1"
+                        Grid.Column="3"
+                        Margin="10,5,10,0">
+                            <lvc:CartesianChart.Series>
+                                <lvc:LineSeries Values="10,25,43,30,80"
+                            PointGeometrySize="0"
+                            Stroke="#4F607D"
+                            Title="使用率">
+                                    <lvc:LineSeries.Fill>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                            <GradientStop Color="#1FFF" Offset="0"/>
+                                            <GradientStop Color="#0FFF" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </lvc:LineSeries.Fill>
+                                </lvc:LineSeries>
+                            </lvc:CartesianChart.Series>
+                            <lvc:CartesianChart.AxisX>
+                                <lvc:Axis Labels="09:00,12:00,15:00,18:00,21:00" FontSize="9">
+                                    <lvc:Axis.Separator>
+                                        <lvc:Separator Step="1"
+                                   Stroke="#2FFF"
+                                   StrokeDashArray="2,2"/>
+                                    </lvc:Axis.Separator>
+                                </lvc:Axis>
+                            </lvc:CartesianChart.AxisX>
+                            <lvc:CartesianChart.AxisY>
+                                <lvc:Axis MinValue="0"
+                      MaxValue="100"
+                      FontSize="9">
+                                    <lvc:Axis.Separator>
+                                        <lvc:Separator Step="25" StrokeThickness="0"/>
+                                    </lvc:Axis.Separator>
+                                </lvc:Axis>
+                            </lvc:CartesianChart.AxisY>
+                        </lvc:CartesianChart>
+                    </Grid>
+                </GroupBox>
             </Grid>
         </Grid>
 

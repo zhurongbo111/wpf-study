@@ -15,6 +15,8 @@ namespace StudySelf.ViewModels
 
         public ObservableCollection<DeviceModel> Devices { get; set; }
 
+        public ObservableCollection<MessageModel> MessageList { get; set; } = new ObservableCollection<MessageModel>();
+
         public MainViewModel()
         {
             this.Devices = new ObservableCollection<DeviceModel>
@@ -32,6 +34,15 @@ namespace StudySelf.ViewModels
                 new DeviceStateModel{ Icon = "/Assets/Images/a3.png", Header = "故障", Value = 35.2 },
                 new DeviceStateModel{ Icon = "/Assets/Images/a4.png", Header = "运行中", Value = 75.2 }
             };
+
+            for (int i = 0; i < 15; i++)
+            {
+                MessageList.Add(new MessageModel()
+                {
+                    Message = "报警消息，报警消息，报警消息",
+                    Date = DateTime.Now.AddDays(-i).ToString("MM/dd"),
+                });
+            }
         }
     }
 }
