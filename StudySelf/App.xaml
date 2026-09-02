@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:StudySelf"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <FontFamily x:Key="Iconfont">Assets/Fonts/iconfont.ttf#iconfont</FontFamily>
     </Application.Resources>
 </Application>

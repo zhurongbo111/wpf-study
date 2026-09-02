@@ -100,6 +100,44 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style x:Key="LeftButton" TargetType="Button">
+            <Setter Property="FontSize" Value="11"/>
+            <Setter Property="Height" Value="26"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Margin" Value="0,5"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            
+                            <Border Name="border" Grid.Column="0" Grid.ColumnSpan="2">
+                                <Border.Background>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                        <GradientStop Color="#416eda" Offset="0"/>
+                                        <GradientStop Color="#1845b3" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Border.Background>
+                                <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Border>
+                            <Border Margin="0,5" Background="#5FFF" Width="3" CornerRadius="0,2,2,0"></Border>
+                            <Polygon Grid.Column="2" Points="0 0  10 0  10 18 0 26">
+                                <Polygon.Fill>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                        <GradientStop Color="#416eda" Offset="0"/>
+                                        <GradientStop Color="#1845b3" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Polygon.Fill>
+                            </Polygon>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
     <Window.Triggers>
         <EventTrigger RoutedEvent="Loaded">
@@ -374,6 +412,33 @@
                     <RowDefinition Height="180"></RowDefinition>
                 </Grid.RowDefinitions>
                 <Canvas Grid.Row="0">
+                    <StackPanel Width="60" Canvas.Left="5" Canvas.Top="50">
+                        <Button Style="{StaticResource LeftButton}">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="&#xe65c;" FontFamily="{StaticResource Iconfont}" Margin="5,0" VerticalAlignment="Center"></TextBlock>
+                                <TextBlock Text="电机解锁" FontSize="7" VerticalAlignment="Center"></TextBlock>
+                            </StackPanel>
+                        </Button>
+                        <Button Style="{StaticResource LeftButton}">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="&#xe612;" FontFamily="{StaticResource Iconfont}" Margin="5,0" VerticalAlignment="Center"></TextBlock>
+                                <TextBlock Text="一键禁止" FontSize="7" VerticalAlignment="Center"></TextBlock>
+                            </StackPanel>
+                        </Button>
+                        <Button Style="{StaticResource LeftButton}">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="&#xe616;" FontFamily="{StaticResource Iconfont}" Margin="5,0" VerticalAlignment="Center"></TextBlock>
+                                <TextBlock Text="一键启动" FontSize="7" VerticalAlignment="Center"></TextBlock>
+                            </StackPanel>
+                        </Button>
+                        <Button Style="{StaticResource LeftButton}">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="保养手册" FontSize="8" VerticalAlignment="Center"></TextBlock>
+                            </StackPanel>
+                        </Button>
+                        <Button Style="{StaticResource LeftButton}" FontSize="8" Content="安全设置" />
+                        <Button Style="{StaticResource LeftButton}" FontSize="8" Content="联系我们" />
+                    </StackPanel>
                     <c:Tank Canvas.Left="70" Canvas.Top="90" Height="100" WaveHeight="100"></c:Tank>
                     <c:WarningLight Height="100" LightState="Run" Canvas.Left="100" Canvas.Top="280"></c:WarningLight>
                     <c:Feed Canvas.Top="30" Canvas.Left="200"></c:Feed>
