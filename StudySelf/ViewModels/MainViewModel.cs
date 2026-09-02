@@ -11,10 +11,7 @@ namespace StudySelf.ViewModels
 {
     public partial class MainViewModel : ObservableObject
     {
-        [ObservableProperty]
-        private string _name;
-
-        //public ObservableCollection<DeviceStateModel> DeviceStates { get; set; }
+        public ObservableCollection<DeviceStateModel> DeviceStates { get; set; }
 
         public ObservableCollection<DeviceModel> Devices { get; set; }
 
@@ -27,6 +24,13 @@ namespace StudySelf.ViewModels
                 new DeviceModel{ DeviceNum = "ABC003", StartTime = DateTime.Now.ToString("HH:mm"), Power = "60%", WorkTime = "3h 10m" },
                 new DeviceModel{ DeviceNum = "ABC004", StartTime = DateTime.Now.ToString("HH:mm"), Power = "50%", WorkTime = "2h 00m" },
                 new DeviceModel{ DeviceNum = "ABC005", StartTime = DateTime.Now.ToString("HH:mm"), Power = "30%", WorkTime = "3h 50m" }
+            };
+            this.DeviceStates = new ObservableCollection<DeviceStateModel>
+            {
+                new DeviceStateModel{ Icon = "/Assets/Images/a1.png", Header = "保养中", Value = 12.3 },
+                new DeviceStateModel{ Icon = "/Assets/Images/a2.png", Header = "待机", Value = 58.7 },
+                new DeviceStateModel{ Icon = "/Assets/Images/a3.png", Header = "故障", Value = 35.2 },
+                new DeviceStateModel{ Icon = "/Assets/Images/a4.png", Header = "运行中", Value = 75.2 }
             };
         }
     }

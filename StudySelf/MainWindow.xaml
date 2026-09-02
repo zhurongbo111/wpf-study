@@ -298,7 +298,7 @@
                             </StackPanel>
                         </Border>
                         <Border Margin="0,5,0,0" Grid.Row="1" BorderBrush="#4fff" BorderThickness="0,0,0,1" />
-                        <Grid Grid.Row="1">
+                        <Grid Grid.Row="1" Margin="0,10">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"></ColumnDefinition>
                                 <ColumnDefinition Width="*"></ColumnDefinition>
@@ -320,10 +320,10 @@
                                             <ColumnDefinition Width="*"></ColumnDefinition>
                                             <ColumnDefinition Width="*"></ColumnDefinition>
                                         </Grid.ColumnDefinitions>
-                                        <TextBlock Grid.Column="0" Text="{Binding DeviceNum}" Foreground="White" VerticalAlignment="Center"></TextBlock>
-                                        <TextBlock Grid.Column="1" Text="{Binding StartTime}" Foreground="White" VerticalAlignment="Center"></TextBlock>
-                                        <TextBlock Grid.Column="2" Text="{Binding Power}" Foreground="White" VerticalAlignment="Center"></TextBlock>
-                                        <TextBlock Grid.Column="3" Text="{Binding WorkTime}" Foreground="White" VerticalAlignment="Center"></TextBlock>
+                                        <TextBlock Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding DeviceNum}" Foreground="White"></TextBlock>
+                                        <TextBlock Grid.Column="1" Text="{Binding StartTime}" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                                        <TextBlock Grid.Column="2" Text="{Binding Power}" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                                        <TextBlock Grid.Column="3" Text="{Binding WorkTime}" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                                     </Grid>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
@@ -332,7 +332,40 @@
                     </Grid>
                 </GroupBox>
                 <GroupBox Header="设备处理状态统计" Style="{StaticResource InfoGroup}">
-                    <TextBlock Text="哈哈" Foreground="White"></TextBlock>
+                    <ItemsControl ItemsSource="{Binding DeviceStates}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Source="{Binding Icon}" Height="30" Width="30" Margin="5,0"></Image>
+                                    <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                        <Border Height="20">
+                                            <Border.Background>
+                                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                                    <GradientStop Color="#44477CD3" Offset="0"/>
+                                                    <GradientStop Color="#00477CD3" Offset="1"/>
+                                                </LinearGradientBrush>
+                                            </Border.Background>
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition></ColumnDefinition>
+                                                    <ColumnDefinition></ColumnDefinition>
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock Text="{Binding Header}" Opacity="0.6" Foreground="White" FontWeight="Bold" HorizontalAlignment="Left"></TextBlock>
+                                                <TextBlock Grid.Column="1" Text="{Binding Value, StringFormat={}{0:F1}%}" Opacity="0.6" Foreground="White" FontWeight="Bold" HorizontalAlignment="Right"></TextBlock>
+                                            </Grid>
+                                        </Border>
+                                        
+                                        <ProgressBar Height="3" Background="#2000" Foreground="Orange" BorderThickness="0" Maximum="100" Minimum="0" Value="{Binding Value}" Margin="0,5,0,0"></ProgressBar>
+                                    </StackPanel>
+                                </Grid>
+                                
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
                 </GroupBox>
             </UniformGrid>
             <Grid Grid.Column="1">
